@@ -1,0 +1,232 @@
+/* ------------------ General ------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+section { padding: 60px 20px; }
+
+/* ------------------ Navbar ------------------ */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  z-index: 1000;
+}
+.navbar .brand a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+.navbar .nav-links {
+  display: flex;
+  gap: 30px;
+}
+.navbar .nav-links a {
+  position: relative;
+  color: #ddd;
+  padding: 5px 0;
+  transition: color 0.3s;
+}
+.navbar .nav-links a:hover { color: #fff; }
+.navbar .nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #0d6efd;
+  transition: width 0.3s;
+}
+.navbar .nav-links a:hover::after { width: 100%; }
+.navbar .nav-links a.active {
+  color: #fff;
+  font-weight: bold;
+}
+.navbar .nav-links a.active::after { width: 100%; }
+
+/* ------------------ Hero Section ------------------ */
+.hero {
+  background: linear-gradient(120deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 150px 20px 100px;
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero-content { flex: 1; }
+.hero-content h1 { font-size: 3rem; margin-bottom: 20px; }
+.hero-content p { font-size: 1.2rem; max-width: 500px; }
+.hero-photo { flex: 1; display: flex; justify-content: flex-end; }
+.hero-photo img {
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* ------------------ About Section ------------------ */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.about .photo {
+  flex: 1 1 200px;
+  text-align: center;
+}
+.about .photo img {
+  border-radius: 50%;
+  width: 200px;
+}
+.about .text {
+  flex: 2 1 400px;
+}
+.about h2 { margin-bottom: 20px; }
+.about p { margin-bottom: 8px; }
+
+/* ------------------ Showcase Section ------------------ */
+.showcase {
+  background-color: whitesmoke;
+  text-align: center;
+}
+.showcase h1 {
+  color: #2575fc;
+  margin-bottom: 0px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.card {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  margin: 30px;
+  overflow: hidden;
+  border-radius: 15px;
+  border: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+}
+.card:hover img { transform: scale(1.1) rotate(-2deg); }
+
+.info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+.card:hover .info { height: 100%; background: rgba(0,0,0,0.8); }
+.info h2 { margin: 0 0 10px 0; font-size: 1.5rem; transform: translateY(20px); opacity: 0; transition: all 0.4s ease; }
+.card:hover .info h2 { transform: translateY(0); opacity: 1; }
+.info p { margin: 0; font-size: 1rem; transform: translateY(20px); opacity: 0; transition: all 0.5s ease 0.2s; }
+.card:hover .info p { transform: translateY(0); opacity: 1; }
+.card:hover {
+  cursor: pointer;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* ------------------ Contact Section ------------------ */
+.contact {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contact h2 { margin-bottom: 20px; }
+.contact p { margin-bottom: 20px; }
+.contact .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+.btn-primary { background-color: #0d6efd; }
+.btn-dark { background-color: #212529; }
+.btn-success { background-color: #198754; }
+.contact .btn:hover { opacity: 0.8; }
+
+/* ------------------ Responsive ------------------ */
+/* Hero responsive */
+@media (max-width: 992px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .hero-photo { justify-content: center; }
+  .hero-photo img { width: 250px; }
+  .hero-content h1 { font-size: 2.2rem; }
+  .hero-content p { font-size: 1rem; max-width: 100%; }
+}
+
+/* About responsive */
+@media (max-width: 768px) {
+  .about { flex-direction: column; text-align: center; padding: 40px 20px; }
+  .about .photo img { width: 150px; margin-bottom: 20px; }
+  .about .text p { font-size: 0.95rem; }
+}
+
+/* Showcase responsive */
+@media (max-width: 992px) {
+  .card { width: 300px; height: 300px; margin: 20px; }
+}
+@media (max-width: 576px) {
+  .card { width: 100%; max-width: 90%; height: auto; }
+  .info h2 { font-size: 1.2rem; }
+  .info p { font-size: 0.9rem; }
+}
+
+/* Contact responsive */
+@media (max-width: 576px) {
+  .contact .btn { width: 100%; max-width: 250px; margin: 10px 0; }
+}
+
+/* Navbar responsive */
+@media (max-width: 768px) {
+  .navbar { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
+  .navbar .nav-links { flex-wrap: wrap; gap: 15px; margin-top: 10px; }
+}
